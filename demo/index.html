@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>vue-photo-preview</title>
+		<link rel="stylesheet" type="text/css" href="../dist/skin.css"/>
+		<style type="text/css">
+			.item img{
+				width: 100%;
+			}
+			.item2 img{
+				width: 44%;
+				margin: 2%;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<div id="app">
+				<!--单个-->
+				<p>单个</p>
+				<div class="item">
+					<img src="1.jpg" preview="1" preview-text="描述文字">
+				</div>
+				<!--分组-->
+				<p>分组</p>
+				<div class="item2">
+					<img src="1.jpg" preview="2" preview-text="描述文字">
+					<img src="3.jpg" preview="2" preview-text="描述文字2">
+				</div>
+		</div>
+		
+		
+		<script src="https://cdn.bootcss.com/vue/2.4.4/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../dist/vue-photo-preview.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+				new Vue({
+					el:'#app'
+				})
+		</script>
+	</body>
+</html>
