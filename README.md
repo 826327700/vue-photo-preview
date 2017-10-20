@@ -38,9 +38,9 @@ Vue.use(preview)
 <img src="xxx.jpg" preview="2" preview-text="描述文字">
 ```
 
-##Options
+## Options   
 [插件配置文档](http://photoswipe.com/documentation/options.html) 
 
-##DEMO
+## DEMO   
 [地址](https://826327700.github.io/vue-photo-preview/demo/)  
 
