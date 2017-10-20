@@ -35,9 +35,15 @@
 		<script src="https://cdn.bootcss.com/vue/2.4.4/vue.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../dist/vue-photo-preview.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
-				new Vue({
-					el:'#app'
-				})
+			var options={
+				fullscreenEl:false //关闭全屏按钮
+			}
+			
+			Vue.use(vuePhotoPreview,options)
+			
+			new Vue({
+				el:'#app'
+			})
 		</script>
 	</body>
 </html>

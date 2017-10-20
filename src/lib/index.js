@@ -276,6 +276,7 @@ var vuePhotoPreview ={
 }
 
 export default vuePhotoPreview
-if (typeof window !== 'undefined' && window.Vue) {
-    window.Vue.use(vuePhotoPreview);
+
+if (typeof window !== 'undefined' && !window.vuePhotoPreview) {
+    window.vuePhotoPreview=vuePhotoPreview;
 }
