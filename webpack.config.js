@@ -1,6 +1,6 @@
 var path = require('path')
 var webpack = require('webpack')
-
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
 module.exports = {
 //entry: './src/main.js',
 	entry:'./src/lib/index.js',
@@ -19,6 +19,10 @@ module.exports = {
         loader: 'vue-loader',
         options: {
           loaders: {
+          	css: ExtractTextPlugin.extract({
+                use: ['css-loader', 'autoprefixer-loader'],
+                fallback: 'vue-style-loader',
+            })
           }
           // other vue-loader options go here
         }
@@ -30,7 +34,10 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ['style-loader','css-loader'],
+        use: ExtractTextPlugin.extract({
+            use: ['css-loader?minimize', 'autoprefixer-loader','resolve-url-loader'],
+            fallback: 'style-loader',
+        })
       },
       {
         test: /\.(png|jpg|gif|svg)$/,
@@ -42,6 +49,9 @@ module.exports = {
       }
     ]
   },
+  plugins:[
+      new ExtractTextPlugin('skin.css'),
+  ],
   resolve: {
     alias: {
       'vue$': 'vue/dist/vue.esm.js'

@@ -156,7 +156,8 @@ var vuePhotoPreview ={
 								return true;
 							},
 							showHideOpacity:true,
-							history:false
+							history:false,
+							shareEl:false,
 							
 
 						};
