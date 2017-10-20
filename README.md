@@ -38,4 +38,4 @@ Vue.use(preview)
 ##DEMO
 [地址](https://826327700.github.io/vue-photo-preview/demo/)  
 
-![image](https://826327700.github.io/vue-photo-preview/demo/preview.gif)
+![image](https://pcs.baidu.com/rest/2.0/pcs/thumbnail?method=generate&app_id=250528&path=%2F%E9%A1%B9%E7%9B%AE%E6%88%AA%E5%9B%BE%2Fpreview.gif&quality=90&size=c1600_u900)
