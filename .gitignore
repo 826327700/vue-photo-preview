@@ -2,7 +2,7 @@
 node_modules/
 npm-debug.log
 yarn-error.log
-
+demo/
 # Editor directories and files
 .idea
 *.suo
