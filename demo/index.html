@@ -21,7 +21,7 @@
 				<!--单个-->
 				<p>单个</p>
 				<div class="item">
-					<img src="1.jpg" preview="1" preview-text="描述文字">
+					<img v-for="item in img1" :src="item" preview="1" preview-text="描述文字">
 				</div>
 				<!--分组-->
 				<p>分组</p>
@@ -41,8 +41,17 @@
 			
 			Vue.use(vuePhotoPreview,options)
 			
-			new Vue({
-				el:'#app'
+			var vm=new Vue({
+				el:'#app',
+				data:{
+					img1:[]
+				},
+				mounted:function(){
+					setTimeout(() => {
+						vm.img1.push('1.jpg')
+						vm.$previewRefresh()
+					}, 2000);
+				}
 			})
 		</script>
 	</body>
