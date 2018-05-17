@@ -51,6 +51,11 @@ Vue.use(preview)
 <img src="xxx.jpg" preview="2" preview-text="描述文字">
 <img src="xxx.jpg" preview="2" preview-text="描述文字">
 ```
+```
+# 2018-05-17 更新
+//如果图片是异步生成的，在图片数据更新后调用：
+this.$previewRefresh()
+```
 
 ## Options   
 [插件配置文档](http://photoswipe.com/documentation/options.html) 
