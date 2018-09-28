@@ -68,11 +68,9 @@
 <script>
 	import 'photoswipe/dist/photoswipe.css'
     import 'photoswipe/dist/default-skin/default-skin.css'
+    export default{
+
+    }
     
 </script>
 
-<style>
-.pswp__img--placeholder--blank{
-
-}
-</style>

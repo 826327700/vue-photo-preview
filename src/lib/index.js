@@ -8,8 +8,16 @@ var vuePhotoPreview ={
         var opts=opts||{}
         if (!$preview) {
             $preview = new Preview({el: document.createElement('div')})
-            document.body.appendChild($preview.$el)
-        }
+			document.body.appendChild($preview.$el)
+		}
+		let eventName,eventCallback
+		Vue.prototype.$preview={
+			self:null,
+			on:(name,callback)=>{
+				eventName=name
+				eventCallback=callback
+			}
+		}
 		Vue.mixin({
 			data(){
 				return {
@@ -53,6 +61,7 @@ var vuePhotoPreview ={
 					}
 					if(index >= 0) {
 						this.openPhotoSwipe(index, clickedGallery);
+						this.$emit('preview-open',e,eTarget.src)
 					}
 					return false;
 				},
@@ -90,7 +99,16 @@ var vuePhotoPreview ={
 						showHideOpacity:true,
 						history:false,
 						shareEl:false,
+						maxSpreadZoom:4,
+						getDoubleTapZoom:function(isMouseClick, item){
+							if(isMouseClick) {
+								
+								return 4;
 						
+							} else {
+								return item.initialZoomLevel < 0.7 ? 1 : 1.5;
+							}
+						}
 
 					};
 
@@ -116,7 +134,6 @@ var vuePhotoPreview ={
 						return;
 					}
 					options=this.extend(options,opts)
-					
 
 					if(disableAnimation) {
 						options.showAnimationDuration = 0;
@@ -124,7 +141,7 @@ var vuePhotoPreview ={
 
 					// Pass data to PhotoSwipe and initialize it
 					gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
-
+					Vue.prototype.$preview.self=gallery
 					// see: http://photoswipe.com/documentation/responsive-images.html
 					var realViewportWidth,
 						useLargeImages = false,
@@ -173,8 +190,9 @@ var vuePhotoPreview ={
 							item.h = item.m.h;
 						}
 					});
-
+					gallery.listen(eventName,eventCallback)
 					gallery.init();
+					$preview.$el.classList=$preview.$el.classList+' pswp--zoom-allowed'
 				},
 				parseThumbnailElements(thumbElements) {
 					var items = [],
@@ -211,7 +229,7 @@ var vuePhotoPreview ={
 							h: rh,
 							author: el.getAttribute('data-author'),
 							o: {
-								src: el.getAttribute('src'),
+								src: el.getAttribute('large')?el.getAttribute('large'):el.getAttribute('src'),
 								w: rw,
 								h: rh,
 							},
@@ -239,6 +257,7 @@ var vuePhotoPreview ={
 						this.galleryElements[i].setAttribute('data-pswp-uid', i + 1);
 						this.galleryElements[i].onclick = this.onThumbnailsClick;
 					}
+					
 				}
 			},
 		    mounted: function () {
