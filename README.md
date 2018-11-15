@@ -53,6 +53,10 @@ Vue.use(preview)
 ```
 
 ```
+# 2018-11-15更新
+重命名this.init为this.initPreview，解决部分冲突问题。
+去除所有console打印
+
 # 2018-10-15 更新
 解决原图与大图模式下的BUG
 

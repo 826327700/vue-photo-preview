@@ -80,7 +80,6 @@ var vuePhotoPreview ={
 							var thumbnail = items[index].el,
 								pageYScroll = window.pageYOffset || document.documentElement.scrollTop,
 								rect = thumbnail.getBoundingClientRect();
-								console.log(rect)
 							return {
 								x: rect.left,
 								y: rect.top + pageYScroll,
@@ -251,7 +250,6 @@ var vuePhotoPreview ={
 									items[index]=item
 									count++
 									if(count==thumbElements.length){
-										console.log(items)
 										resolve(items)
 									}
 								}
@@ -270,7 +268,7 @@ var vuePhotoPreview ={
 					}
 					return o1
 				},
-				init(gallerySelector){
+				initPreview(gallerySelector){
 					this.galleryElements = document.querySelectorAll(gallerySelector);
 					for(var i = 0, l = this.galleryElements.length; i < l; i++) {
 						this.galleryElements[i].setAttribute('data-pswp-uid', i + 1);
@@ -280,7 +278,7 @@ var vuePhotoPreview ={
 				}
 			},
 		    mounted: function () {
-				this.init('img[preview]')
+				this.initPreview('img[preview]')
 		      	
 		    }
 		})
