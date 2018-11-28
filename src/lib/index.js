@@ -21,7 +21,8 @@ var vuePhotoPreview ={
 		Vue.mixin({
 			data(){
 				return {
-					galleryElements:null
+					galleryElements:null,
+					galleryPicLoading:false
 				}
 			},
 			methods:{
@@ -36,6 +37,8 @@ var vuePhotoPreview ={
 					
 				},
 				onThumbnailsClick(e) {
+					if(this.galleryPicLoading)return false;
+					this.galleryPicLoading=true
 					e = e || window.event;
 					e.preventDefault ? e.preventDefault() : e.returnValue = false;
 
@@ -189,6 +192,9 @@ var vuePhotoPreview ={
 							item.w = item.m.w;
 							item.h = item.m.h;
 						}
+					});
+					gallery.listen('imageLoadComplete', (index, item)=> {
+						this.galleryPicLoading=false
 					});
 					gallery.listen(eventName,eventCallback)
 					gallery.init();
