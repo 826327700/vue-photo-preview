@@ -80,7 +80,7 @@ var vuePhotoPreview ={
 						//galleryUID: galleryElement.getAttribute('data-pswp-uid'),
 
 						getThumbBoundsFn: function() {
-							var thumbnail = items[index].el,
+							var thumbnail = galleryElement[index],
 								pageYScroll = window.pageYOffset || document.documentElement.scrollTop,
 								rect = thumbnail.getBoundingClientRect();
 							return {
@@ -106,7 +106,7 @@ var vuePhotoPreview ={
 						getDoubleTapZoom:function(isMouseClick, item){
 							if(isMouseClick) {
 								
-								return 4;
+								return 1.5;
 						
 							} else {
 								return item.initialZoomLevel < 0.7 ? 1 : 1.5;
@@ -183,14 +183,12 @@ var vuePhotoPreview ={
 					});
 
 					gallery.listen('gettingData', function(index, item) {
-						if(item.el.getAttribute('large')) {
-							item.src = item.o.src;
+						if(galleryElement[index].getAttribute('large')) {
 							item.w = item.o.w;
 							item.h = item.o.h;
 						} else {
-							item.src = item.m.src;
-							item.w = item.m.w;
-							item.h = item.m.h;
+							item.w = item.w;
+							item.h = item.h;
 						}
 					});
 					gallery.listen('imageLoadComplete', (index, item)=> {
@@ -219,7 +217,7 @@ var vuePhotoPreview ={
 							if(typeof el.naturalWidth == "undefined") {　　 // IE 6/7/8
 								　　
 								var i = new Image();　　
-								i.src = el.src;　　
+								i.src = el.src;
 								var rw = i.width;　　
 								var rh = i.height;
 							} else {　　 // HTML5 browsers
@@ -232,6 +230,7 @@ var vuePhotoPreview ={
 							function getImage(index){
 								var l=new Image()
 								l.src=el.getAttribute('large')?el.getAttribute('large'):el.getAttribute('src')
+								l.msrc = el.getAttribute('src')
 								l.text=el.getAttribute('preview-text')
 								l.author=el.getAttribute('data-author')
 								l.onload=function(){
@@ -239,15 +238,11 @@ var vuePhotoPreview ={
 										title: l.text,
 										el: el,
 										src: l.src,
+										msrc: l.msrc,
 										w: rw,
 										h: rh,
 										author: l.author,
 										o: {
-											src: l.src,
-											w: this.width,
-											h: this.height,
-										},
-										m: {
 											src: l.src,
 											w: this.width,
 											h: this.height,
@@ -260,13 +255,10 @@ var vuePhotoPreview ={
 									}
 								}
 							}
-							
 
 						}
 					})
 					
-					return items
-
 				},
 				extend(o1, o2) {
 					for (var prop in o2) {
