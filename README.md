@@ -52,10 +52,10 @@ Vue.use(preview)
 <img src="xxx.jpg" preview="2" preview-text="描述文字">
 
 <img src="xxx.jpg" large="xxx_3x.jpg" preview="2" preview-text="缩略图与大图模式">
-``` bash
+```
 
 
-``` bash
+
 # 2019-02-02更新
 修复打开和关闭图片页面时，动画起始位置总是位于图片组最后一张的问题。调整默认点击放大倍数。
 
@@ -85,12 +85,11 @@ this.$preview.on('imageLoadComplete',(e,item)=>{
 
 //应性能要求 新增大图查看 large标签填写大图路径 （插件的思路是 img的src默认为缩略图），如不填写large，则展示src
 <img src="xxx.jpg" large="xxx_3x.jpg" preview="2" preview-text="描述文字">
-```
-```
+
 # 2018-05-17 更新
 //如果图片是异步生成的，在图片数据更新后调用：
 this.$previewRefresh()
-```
+
 
 
 ## Options   
