@@ -56,39 +56,47 @@ Vue.use(preview)
 
 
 
-# 2019-02-02更新
+### 2019-02-02更新
 修复打开和关闭图片页面时，动画起始位置总是位于图片组最后一张的问题。调整默认点击放大倍数。
 
-# 2018-11-28更新
+### 2018-11-28更新
 解决图片多次点击问题。缩略图只可点击一次，直至图片加载完成后，才可再次打开。
 
-# 2018-11-15更新
+### 2018-11-15更新
 重命名this.init为this.initPreview，解决部分冲突问题。
 去除所有console打印
 
-# 2018-10-15 更新
+### 2018-10-15 更新
 解决原图与大图模式下的BUG
 
-# 2018-09-28 更新
+### 2018-09-28 更新
 //添加对原插件photoswipe的事件响应，示例：
+```
 this.$preview.on('close',())=>{//close只是众多事件名的其中一个，更多请查看文档
 	console.log('图片查看器被关闭')
 })
+```
 
 //添加图片查看器实例--this.$preview.self 注意：此实例仅在图片查看器被打开时生效
+```
 this.$preview.on('imageLoadComplete',(e,item)=>{
 	console.log(this.$preview.self)  //此时this.$preview.self拥有原插件photoswipe文档中的所有方法和属性
 })
+```
 
 //demo文件夹中index.html可以供参考写法
 //本次更新后继承了原插件的所有事件、方法和属性，如需复杂使用请多多查看[原插件文档](http://photoswipe.com/documentation/api.html) 
 
 //应性能要求 新增大图查看 large标签填写大图路径 （插件的思路是 img的src默认为缩略图），如不填写large，则展示src
+```
 <img src="xxx.jpg" large="xxx_3x.jpg" preview="2" preview-text="描述文字">
+```
 
-# 2018-05-17 更新
+### 2018-05-17 更新
 //如果图片是异步生成的，在图片数据更新后调用：
+```
 this.$previewRefresh()
+```
 
 
 
