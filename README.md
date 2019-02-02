@@ -52,9 +52,10 @@ Vue.use(preview)
 <img src="xxx.jpg" preview="2" preview-text="描述文字">
 
 <img src="xxx.jpg" large="xxx_3x.jpg" preview="2" preview-text="缩略图与大图模式">
-```
+``` bash
 
-```
+
+``` bash
 # 2019-02-02更新
 修复打开和关闭图片页面时，动画起始位置总是位于图片组最后一张的问题。调整默认点击放大倍数。
 
