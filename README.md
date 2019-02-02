@@ -50,6 +50,8 @@ Vue.use(preview)
 
 <img src="xxx.jpg" preview="2" preview-text="描述文字">
 <img src="xxx.jpg" preview="2" preview-text="描述文字">
+
+<img src="xxx.jpg" large="xxx_3x.jpg" preview="2" preview-text="缩略图与大图模式">
 ```
 
 ```
