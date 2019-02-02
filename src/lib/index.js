@@ -53,7 +53,7 @@ var vuePhotoPreview ={
 						thumbElements = document.querySelectorAll('img[preview]')
 					}
 					var clickedGallery = thumbElements;
-
+					
 					var index;
 
 					for(var i = 0; i < clickedGallery.length; i++) {
@@ -77,9 +77,9 @@ var vuePhotoPreview ={
 					var items = await this.parseThumbnailElements(galleryElement);
 					options = {
 
-						//galleryUID: galleryElement.getAttribute('data-pswp-uid'),
+						// galleryUID: galleryElement.getAttribute('data-pswp-uid'),
 
-						getThumbBoundsFn: function() {
+						getThumbBoundsFn: function(index) {
 							var thumbnail = items[index].el,
 								pageYScroll = window.pageYOffset || document.documentElement.scrollTop,
 								rect = thumbnail.getBoundingClientRect();
@@ -102,11 +102,11 @@ var vuePhotoPreview ={
 						showHideOpacity:true,
 						history:false,
 						shareEl:false,
-						maxSpreadZoom:4,
+						maxSpreadZoom:3,
 						getDoubleTapZoom:function(isMouseClick, item){
 							if(isMouseClick) {
 								
-								return 4;
+								return 1.5;
 						
 							} else {
 								return item.initialZoomLevel < 0.7 ? 1 : 1.5;
@@ -237,7 +237,7 @@ var vuePhotoPreview ={
 								l.onload=function(){
 									item = {
 										title: l.text,
-										el: el,
+										el: thumbElements[index],
 										src: l.src,
 										w: rw,
 										h: rh,
