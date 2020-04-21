@@ -72,7 +72,7 @@ Vue.use(preview)
 ### 2018-09-28 更新
 //添加对原插件photoswipe的事件响应，示例：
 ```
-this.$preview.on('close',())=>{//close只是众多事件名的其中一个，更多请查看文档
+this.$preview.on('close',()=>{//close只是众多事件名的其中一个，更多请查看文档
 	console.log('图片查看器被关闭')
 })
 ```
